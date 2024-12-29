@@ -19,16 +19,9 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
-    exposedHeaders: ["Set-Cookie"]
+    exposedHeaders: ["Set-Cookie"],
   })
 );
-
-// Add these headers for cookie handling
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Cookie');
-  next();
-});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);

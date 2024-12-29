@@ -15,20 +15,20 @@ export const generateToken = (userId: Types.ObjectId, res: Response) => {
     expiresIn: "7D",
   });
 
-   // Log cookie setting attempt
-   console.log("Setting cookie with token:", token);
+  // Log cookie setting attempt
+  console.log("Setting cookie with token:", token);
 
   res.cookie("jwt", token, {
     maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
     sameSite: "none",
     secure: true,
-    domain:".onrender.com"
+    domain: process.env.RENDER_EXTERNAL_HOSTNAME || ".onrender.com",
   });
 
   // Log headers after setting cookie
   console.log("Headers after setting cookie:", res.getHeaders());
-  
+
   console.log(
     "Is Token Generared let's check.. and userId.. ==>>  ",
     token,
