@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "ES2020" /* Use ES2016 for emitted JavaScript compatibility */,
+    "module": "NodeNext" /* Enable ES module compatibility for Node.js */,
+    "moduleResolution": "nodenext" /* Resolve modules in a Node.js environment */,
+    "strict": true /* Enable all strict type-checking options */,
+    "esModuleInterop": true /* Emit additional JS for CommonJS module imports */,
+    "forceConsistentCasingInFileNames": true /* Enforce consistent casing in module imports */,
+    "skipLibCheck": true /* Skip type checking of declaration files */,
+    "noImplicitAny": true /* Ensure no `any` types without explicit declaration */,
+    "sourceMap": true /* Generate .map files alongside JavaScript */,
+    "baseUrl": "src" /* Set the root directory for imports */,
+    "paths": { "*": ["*"] } /* Map module imports relative to `src` */,
+
+    /* Output Options */
+    "outDir": "./dist" /* Redirect output structure to the 'dist' folder */,
+    "rootDir": "./src" /* Specify the root directory of input files */,
+
+    /* Additional Options */
+    "allowSyntheticDefaultImports": true /* Allow default imports from modules without default exports */
+  },
+  "include": ["src/**/*"] /* Include all files in the 'src' directory */,
+  "exclude": [
+    "node_modules",
+    "dist"
+  ] /* Exclude 'node_modules' and 'dist' from compilation */
+}
