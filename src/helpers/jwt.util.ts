@@ -3,10 +3,15 @@ import { Response } from "express";
 import { Types } from "mongoose";
 
 export const generateToken = (userId: Types.ObjectId, res: Response) => {
-  console.log(" Type of Secret key ==> ", typeof process.env.JWT_SECRETKEY);
-  console.log("Value of Secret key ==> ", process.env.JWT_SECRETKEY);
+  const secretKey = process.env.JWT_SECRETKEY;
+  console.log(" Type of Secret key ==> ", typeof secretKey);
+  console.log("Value of Secret key ==> ", secretKey);
 
-  const token = jwt.sign({ userId }, process.env.JWT_SECRETKEY as string, {
+  if (!secretKey) {
+    throw new Error("JWT_SECRETKEY is not defined in environment variables.");
+  }
+
+  const token = jwt.sign({ userId }, secretKey, {
     expiresIn: "7D",
   });
   res.cookie("jwt", token, {
