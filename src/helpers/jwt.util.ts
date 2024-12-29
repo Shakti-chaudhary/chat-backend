@@ -14,17 +14,19 @@ export const generateToken = (userId: Types.ObjectId, res: Response) => {
   const token = jwt.sign({ userId }, secretKey, {
     expiresIn: "7D",
   });
+
+  res.cookie("jwt", token, {
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+    sameSite: "none",
+    secure: true,
+    domain:".onrender.com"
+  });
   console.log(
     "Is Token Generared let's check.. and userId.. ==>>  ",
     token,
     " ==>> ",
     userId
   );
-
-  res.cookie("jwt", token, {
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-    httpOnly: true,
-    sameSite: "strict",
-    secure: true,
-  });
+  return token;
 };

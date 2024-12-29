@@ -18,6 +18,7 @@ app.use(
     origin: "https://chat-client-glpk.onrender.com",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ['Content-Type', 'Authorization',"Cookie"]
   })
 );
 
