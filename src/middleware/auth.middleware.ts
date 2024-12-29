@@ -15,13 +15,14 @@ export const protectRoute = async (
   try {
     const token = req.cookies.jwt;
 
+    console.log("Protected route call  and cookies is ", req.cookies);
+    console.log(" token is ", req.cookies.jwt);
+
     if (!token) {
       return res
         .status(401)
         .json({ message: "Unauthorized - No Token Provided" });
     }
-    console.log("Protected route call  and cookies is ", req.cookies);
-    console.log(" token is ", req.cookies.jwt);
 
     const decoded = jwt.verify(token, process.env.JWT_SECRETKEY as string) as {
       userId: string;
